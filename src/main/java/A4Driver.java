@@ -32,11 +32,10 @@ public class A4Driver {
                     G.addEdge(data.indexOf(inputs[0])-1,data.indexOf(inputs[3])-1);
                 }
             }
-            System.out.println(G.toString());
-            DepthFirstDirectedPaths dfs = new DepthFirstDirectedPaths(G, 0);
-
-
-
+            Topological topological = new Topological(G);
+            for (int v : topological.order()) {
+                System.out.println(data.get(v+1));;
+            }
         }
 
     }
