@@ -33,9 +33,14 @@ public class A4Driver {
                 }
             }
             Topological topological = new Topological(G);
-            for (int v : topological.order()) {
-                System.out.println(data.get(v+1));;
+            try{
+                for (int v : topological.order()) {
+                    System.out.println(data.get(v+1));;
+                }
+            } catch (NullPointerException e){
+                System.out.println("impossible");
             }
+
         }
 
     }
