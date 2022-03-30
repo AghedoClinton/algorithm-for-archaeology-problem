@@ -12,17 +12,32 @@ import edu.princeton.cs.algs4.*;
 public class A4Driver {
 
     public static void main(String[] args) {
-
         //replace all of this code with your solution
 
-        System.out.println("enter anything followed by <CTRL>+D");
-        Bag<String> data = new Bag<>();
+        ArrayList<String> data = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
         while(scan.hasNextLine()) {
             data.add(scan.nextLine());
+
         }
-        for(var s : data ) {
-            System.out.println(s);
+
+        if(Integer.parseInt(data.get(0)) == 1){
+            System.out.println(data.get(1));
         }
+        else {
+            Digraph G = new Digraph(Integer.parseInt(data.get(0)));
+            for(String s : data){
+                if (s.contains("rests on")){
+                    String[] inputs=s.split(" ");
+                    G.addEdge(data.indexOf(inputs[0])-1,data.indexOf(inputs[3])-1);
+                }
+            }
+            System.out.println(G.toString());
+            DepthFirstDirectedPaths dfs = new DepthFirstDirectedPaths(G, 0);
+
+
+
+        }
+
     }
 }
